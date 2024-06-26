@@ -53,6 +53,16 @@ namespace BlazorMenu.Services
         }
         #endregion
 
+        public ValueTask SetTenantAsync(string pcTenantId)
+        {
+            return _localStorage.SetItemAsync<string>(StorageConstants.TenantId, pcTenantId);
+        }
+
+        public ValueTask<string> GetTenantAsync()
+        {
+            return _localStorage.GetItemAsync<string>(StorageConstants.TenantId);
+        }
+
         public ValueTask ClearLocalStorageAsync()
         {
             return _localStorage.RemoveItemsAsync(new string[]
@@ -60,7 +70,8 @@ namespace BlazorMenu.Services
                 StorageConstants.AuthToken,
                 StorageConstants.Culture,
                 StorageConstants.CultureInfo,
-                StorageConstants.RefreshToken
+                StorageConstants.RefreshToken,
+                StorageConstants.TenantId
             });
         }
     }

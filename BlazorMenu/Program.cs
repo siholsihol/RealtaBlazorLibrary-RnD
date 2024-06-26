@@ -1,5 +1,4 @@
 using BlazorMenu.Extensions;
-using BlazorMenu.Routing;
 using BlazorMenu.Services;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
@@ -9,6 +8,7 @@ using R_BlazorFrontEnd.FileConverter;
 using R_BlazorFrontEnd.Helpers;
 using R_BlazorFrontEnd.Interfaces;
 using R_BlazorFrontEnd.Report;
+using R_BlazorFrontEnd.Tenant;
 using R_BlazorStartup;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -28,10 +28,14 @@ builder.Services.AddTransient<HttpInterceptorService>();
 
 Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", builder.HostEnvironment.Environment);
 
-builder.Services.AddSingleton<RouteManager>();
-builder.Services.AddScoped<Interop>();
+//builder.Services.AddSingleton<RouteManager>();
+//builder.Services.AddScoped<Interop>();
+
+builder.Services.AddMultiTenantancy();
 
 var host = builder.Build();
+
+host.Services.AddServiceProviderToTenantRoutes();
 
 host.R_SetupBlazorService();
 

@@ -5,6 +5,7 @@ using BlazorMenuModel;
 using Microsoft.AspNetCore.Components.Authorization;
 using R_AuthenticationEnumAndInterface;
 using R_BlazorFrontEnd.Exceptions;
+using R_BlazorFrontEnd.Tenant;
 using R_CommonFrontBackAPI;
 using R_SecurityPolicyCommon.DTOs;
 using R_SecurityPolicyModel;
@@ -18,18 +19,21 @@ namespace BlazorMenu.Authentication
         private readonly R_ITokenRepository _tokenRepository;
         private readonly BlazorMenuLocalStorageService _localStorageService;
         private readonly R_IMenuService _menuService;
+        private readonly Tenant _tenant;
         private readonly IClientHelper _clientHelper;
 
         public BlazorMenuAuthenticationStateProvider(
             R_ITokenRepository tokenRepository,
             BlazorMenuLocalStorageService localStorageService,
             IClientHelper clientHelper,
-            R_IMenuService menuService)
+            R_IMenuService menuService,
+            Tenant tenant)
         {
             _tokenRepository = tokenRepository;
             _localStorageService = localStorageService;
             _clientHelper = clientHelper;
             _menuService = menuService;
+            _tenant = tenant;
         }
 
         public override async Task<AuthenticationState> GetAuthenticationStateAsync()
@@ -42,6 +46,10 @@ namespace BlazorMenu.Authentication
                 var lcSavedToken = _tokenRepository.R_GetToken();
 
                 if (string.IsNullOrWhiteSpace(lcSavedToken))
+                    return loState;
+
+                var lcTenantId = await _localStorageService.GetTenantAsync();
+                if (_tenant.Identifier != lcTenantId)
                     return loState;
 
                 if (_tokenRepository.R_IsTokenExpired())

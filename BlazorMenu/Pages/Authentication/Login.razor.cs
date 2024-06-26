@@ -9,6 +9,7 @@ using R_AuthenticationEnumAndInterface;
 using R_BlazorFrontEnd.Controls.MessageBox;
 using R_BlazorFrontEnd.Controls.Notification;
 using R_BlazorFrontEnd.Exceptions;
+using R_BlazorFrontEnd.Tenant;
 using R_CommonFrontBackAPI;
 using R_CrossPlatformSecurity;
 
@@ -24,6 +25,7 @@ namespace BlazorMenu.Pages.Authentication
         [Inject] private R_ISymmetricJSProvider _encryptProvider { get; set; }
         [Inject] private MenuTabSetTool MenuTabSetTool { get; set; }
         [Inject] private R_NotificationService _notificationService { get; set; }
+        [Inject] private Tenant Tenant { get; set; }
 
         private readonly R_LoginViewModel _loginVM = new();
 
@@ -111,6 +113,8 @@ namespace BlazorMenu.Pages.Authentication
                         { "CTIME_SHORT_FORMAT", _loginVM.LoginResult.CTIME_SHORT_FORMAT }
                     };
                 await _localStorageService.SetCultureInfoAsync(loDictCulture);
+
+                await _localStorageService.SetTenantAsync(Tenant.Identifier);
 
                 if (!_loginVM.LoginResult.CCULTURE_ID.Equals("en", StringComparison.InvariantCultureIgnoreCase))
                     _navigationManager.NavigateTo(_navigationManager.Uri, true);

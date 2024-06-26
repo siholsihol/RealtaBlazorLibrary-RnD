@@ -1,13 +1,12 @@
-﻿@using BlazorMenu.Routing
-@using Microsoft.AspNetCore.Components.WebAssembly.Services
+﻿@using Microsoft.AspNetCore.Components.WebAssembly.Services
 @using System.Reflection
-@using R_BlazorFrontEnd.Helpers
 @using BlazorMenu.Shared.Tabs
+
 @inject LazyAssemblyLoader AssemblyLoader
 @inject NavigationManager NavigationManager
 
-<CascadingAuthenticationState>
-    <Router AppAssembly="@typeof(Program).Assembly"
+@* <CascadingAuthenticationState> *@
+    @* <Router AppAssembly="@typeof(Program).Assembly"
             AdditionalAssemblies="@lazyLoadedAssemblies"
             OnNavigateAsync="@OnNavigateAsync">
         <Found Context="routeData">
@@ -18,7 +17,7 @@
                 <p>Sorry, there's nothing at this address.</p>
             </LayoutView>
         </NotFound>
-    </Router>
+    </Router> *@
 
     @* <ConventionRouter>
         <Found Context="routeData">
@@ -30,9 +29,69 @@
             </LayoutView>
         </NotFound>
     </ConventionRouter> *@
-</CascadingAuthenticationState>
+
+    @* <TenantRouter AppAssembly="@typeof(Program).Assembly"
+                  AdditionalAssemblies="@lazyLoadedAssemblies">
+        <Found Context="routeData">
+            <MenuTabsRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p>Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+        <NoTenant Context="message">
+            <LayoutView Layout="@typeof(NoTenantLayout)">
+                <p>@message</p>
+            </LayoutView>
+        </NoTenant>
+    </TenantRouter> *@
+@* </CascadingAuthenticationState> *@
+
+@if (_environment.IsDevelopment)
+{
+    <Router AppAssembly="@typeof(Program).Assembly"
+            AdditionalAssemblies="@lazyLoadedAssemblies"
+            OnNavigateAsync="@OnNavigateAsync">
+        <Found Context="routeData">
+            <CascadingAuthenticationState>
+                <MenuTabsRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+            </CascadingAuthenticationState>
+        </Found>
+        <NotFound>
+            <LayoutView Layout="@typeof(MainLayout)">
+                <p>Sorry, there's nothing at this address.</p>
+            </LayoutView>
+        </NotFound>
+    </Router>
+}
+else
+{
+    <TenantRouter AppAssembly="@typeof(Program).Assembly"
+                  AdditionalAssemblies="@lazyLoadedAssemblies">
+        <Found Context="routeData">
+            <CascadingAuthenticationState>
+                <MenuTabsRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
+            </CascadingAuthenticationState>
+        </Found>
+        <NotFound>
+            <CascadingAuthenticationState>
+                <LayoutView Layout="@typeof(MainLayout)">
+                    <p>Sorry, there's nothing at this address.</p>
+                </LayoutView>
+            </CascadingAuthenticationState>
+        </NotFound>
+        <NoTenant Context="message">
+            <LayoutView Layout="@typeof(NoTenantLayout)">
+                <p>@message</p>
+            </LayoutView>
+        </NoTenant>
+    </TenantRouter>
+}
 
 @code {
+    [Inject] private R_IEnvironment _environment { get; set; }
+
     private List<Assembly> lazyLoadedAssemblies = new()
     {
         //typeof(GSM00100Front.GSM00100).Assembly,

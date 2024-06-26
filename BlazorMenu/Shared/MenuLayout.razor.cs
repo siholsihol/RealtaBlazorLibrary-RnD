@@ -8,6 +8,7 @@ using BlazorMenuCommon.DTOs;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.JSInterop;
+using R_BlazorFrontEnd.Tenant;
 
 namespace BlazorMenu.Shared
 {
@@ -18,6 +19,7 @@ namespace BlazorMenu.Shared
         [Inject] private MenuTabSetTool TabSetTool { get; set; }
         [Inject] private IJSRuntime JSRuntime { get; set; }
         [Inject] private IClientHelper _clientHelper { get; set; }
+        [Inject] private Tenant _tenant { get; set; }
 
         private List<MenuListDTO> _menuList = new();
         private List<DrawerMenuItem> _data = new();
@@ -105,7 +107,7 @@ namespace BlazorMenu.Shared
         {
             await ((BlazorMenuAuthenticationStateProvider)_stateProvider).MarkUserAsLoggedOut();
 
-            _navigationManager.NavigateTo("/");
+            _navigationManager.NavigateTo("/" + _tenant.Identifier);
         }
     }
 }
