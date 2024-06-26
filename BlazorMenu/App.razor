@@ -5,49 +5,6 @@
 @inject LazyAssemblyLoader AssemblyLoader
 @inject NavigationManager NavigationManager
 
-@* <CascadingAuthenticationState> *@
-    @* <Router AppAssembly="@typeof(Program).Assembly"
-            AdditionalAssemblies="@lazyLoadedAssemblies"
-            OnNavigateAsync="@OnNavigateAsync">
-        <Found Context="routeData">
-            <MenuTabsRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        </Found>
-        <NotFound>
-            <LayoutView Layout="@typeof(MainLayout)">
-                <p>Sorry, there's nothing at this address.</p>
-            </LayoutView>
-        </NotFound>
-    </Router> *@
-
-    @* <ConventionRouter>
-        <Found Context="routeData">
-            <MenuTabsRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        </Found>
-        <NotFound>
-            <LayoutView Layout="@typeof(MainLayout)">
-                <p>Sorry, there's nothing at this address.</p>
-            </LayoutView>
-        </NotFound>
-    </ConventionRouter> *@
-
-    @* <TenantRouter AppAssembly="@typeof(Program).Assembly"
-                  AdditionalAssemblies="@lazyLoadedAssemblies">
-        <Found Context="routeData">
-            <MenuTabsRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
-        </Found>
-        <NotFound>
-            <LayoutView Layout="@typeof(MainLayout)">
-                <p>Sorry, there's nothing at this address.</p>
-            </LayoutView>
-        </NotFound>
-        <NoTenant Context="message">
-            <LayoutView Layout="@typeof(NoTenantLayout)">
-                <p>@message</p>
-            </LayoutView>
-        </NoTenant>
-    </TenantRouter> *@
-@* </CascadingAuthenticationState> *@
-
 @if (_environment.IsDevelopment)
 {
     <Router AppAssembly="@typeof(Program).Assembly"
@@ -94,7 +51,7 @@ else
 
     private List<Assembly> lazyLoadedAssemblies = new()
     {
-        //typeof(GSM00100Front.GSM00100).Assembly,
+        // typeof(GSM00100Front.GSM00100).Assembly,
     };
 
     private async Task OnNavigateAsync(NavigationContext args)
