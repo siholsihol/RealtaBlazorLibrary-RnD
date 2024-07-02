@@ -103,6 +103,8 @@ namespace BlazorMenu.Pages.Authentication
 
                 await _localStorageService.SetCultureAsync(_loginVM.LoginResult.CCULTURE_ID);
 
+                await _localStorageService.SetCultureReportAsync(_loginVM.LoginResult.CREPORT_CULTURE);
+
                 var loDictCulture = new Dictionary<string, string>
                     {
                         { "CNUMBER_FORMAT", _loginVM.LoginResult.CNUMBER_FORMAT },

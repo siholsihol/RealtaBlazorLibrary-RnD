@@ -53,6 +53,7 @@ namespace BlazorMenu.Services
         }
         #endregion
 
+        #region Tenant
         public ValueTask SetTenantAsync(string pcTenantId)
         {
             return _localStorage.SetItemAsync<string>(StorageConstants.TenantId, pcTenantId);
@@ -62,6 +63,19 @@ namespace BlazorMenu.Services
         {
             return _localStorage.GetItemAsync<string>(StorageConstants.TenantId);
         }
+        #endregion
+
+        #region Culture Report
+        public ValueTask SetCultureReportAsync(string pcCultureReport)
+        {
+            return _localStorage.SetItemAsync<string>(StorageConstants.CultureReport, pcCultureReport);
+        }
+
+        public ValueTask<string> GetCultureReportAsync()
+        {
+            return _localStorage.GetItemAsync<string>(StorageConstants.CultureReport);
+        }
+        #endregion
 
         public ValueTask ClearLocalStorageAsync()
         {
