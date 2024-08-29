@@ -45,6 +45,11 @@ else
                 <p>@message</p>
             </LayoutView>
         </NoTenant>
+        <ApiError Context="message">
+            <LayoutView Layout="@typeof(NoTenantLayout)">
+                <p>@message</p>
+            </LayoutView>
+        </ApiError>
     </TenantRouter>
 }
 
