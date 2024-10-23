@@ -64,7 +64,8 @@ html.navbar-vertical-collapsed footer, html.navbar-vertical-collapsed .navbar-br
 
 /* Tabbing */
 .k-tabstrip-items .k-link, ul.nav-tabs .nav-link {
-    padding: 0rem .5rem .1em !important;
+    /*padding: 0rem .5rem .1em !important;*/
+    padding: 0rem .5rem .1em;
 }
 .k-tabstrip-content, .k-tabstrip > .k-content {
     border-width:0px !important;
@@ -164,6 +165,16 @@ ul ul li.nav-item a.nav-link span {
     cursor:not-allowed !important;
 }
 
+/* ComboBox Button */
+.k-input .k-button {
+    padding: 0.25rem !important;
+    padding-block: 0px !important;
+}
+
+/* DropdownList Button */
+.k-picker-md .k-input-button {
+    padding-block: 0px !important;
+}
 
 /* Input */
 .k-input-md .k-input-inner, .k-picker-md .k-input-inner {
@@ -174,9 +185,6 @@ ul ul li.nav-item a.nav-link span {
     border-color: var(--falcon-input-border-color) !important;
     background-color: var(--falcon-input-bg) !important;
     color: var(--falcon-input-color) !important;
-}
-.k-input .k-button {
-    padding: 0.25rem !important;
 }
 
 .k-disabled [disabled],
@@ -217,8 +225,8 @@ ul ul li.nav-item a.nav-link span {
     border: none !important;
 }
 .k-checkbox:disabled, .k-checkbox.k-disabled, .k-radio:disabled, .k-radio.k-disabled {
-    background-color: #aaaaaa !important;
-    border-color: #999999 !important;
+    background-color: #2c7be5 !important;
+    border-color: #2c7be5 !important;
     cursor: not-allowed !important;
 }
 
@@ -300,6 +308,13 @@ ul ul li.nav-item a.nav-link span {
     width:8em !important;
 }
 
+/* Searchbox */
+.search-box .dropdown-menu {
+    border:none !important;
+}
+.search-box a.dropdown-item {
+    cursor:pointer;
+}
 /* Popup */
 .k-popup {
     background-color: var(--falcon-card-bg) !important;
@@ -484,4 +499,31 @@ ul ul li.nav-item a.nav-link span {
     margin-top: 0.25rem;
     font-size: 75%;
     color: #e63757;
+}
+
+/* Blazor X Tabs */
+.xtabs[b-mlpxtvpz0w] {
+    background-color: transparent !important;
+}
+.xtabs-item .xtabs-link.active[b-21c0qposjk] {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    border-bottom-color: var(--falcon-primary) !important;
+}
+button.close[b-21c0qposjk] {
+    font-weight: 300 !important;
+    color: #2c7be5 !important;
+    text-shadow: none !important;
+    line-height: 26px !important;
+}
+button.close span {
+    padding: 0 3px !important;
+}
+button.close span:hover {
+    color: #fff !important;
+    background-color: #2c7be5 !important;
+    z-index: 99999 !important;
+}
+h6[b-21c0qposjk] {
+    padding-right:4px !important;
 }

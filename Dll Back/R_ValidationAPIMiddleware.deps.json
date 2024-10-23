@@ -6,24 +6,37 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "R_MultiTenantDb/1.0.0": {
+      "R_ValidationAPIMiddleware/1.0.0": {
         "dependencies": {
-          "Microsoft.Extensions.Caching.Abstractions": "6.0.0",
-          "R_CommonFrontBackAPI": "1.0.0",
-          "R_MultiTenantDb.Abstract": "1.0.0"
+          "Microsoft.AspNetCore.Http.Abstractions": "2.2.0",
+          "Microsoft.Extensions.Logging.Abstractions": "6.0.0",
+          "R_APICommonDTO": "1.0.0",
+          "R_ApplicationBack": "1.0.0"
         },
         "runtime": {
-          "R_MultiTenantDb.dll": {}
+          "R_ValidationAPIMiddleware.dll": {}
         }
       },
-      "Microsoft.Extensions.Caching.Abstractions/6.0.0": {
+      "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Http.Features": "2.2.0",
+          "System.Text.Encodings.Web": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Abstractions.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Http.Features/2.2.0": {
         "dependencies": {
           "Microsoft.Extensions.Primitives": "8.0.0"
         },
         "runtime": {
-          "lib/netstandard2.0/Microsoft.Extensions.Caching.Abstractions.dll": {
-            "assemblyVersion": "6.0.0.0",
-            "fileVersion": "6.0.21.52210"
+          "lib/netstandard2.0/Microsoft.AspNetCore.Http.Features.dll": {
+            "assemblyVersion": "2.2.0.0",
+            "fileVersion": "2.2.0.18316"
           }
         }
       },
@@ -82,12 +95,18 @@
           "System.Runtime.CompilerServices.Unsafe": "6.0.0"
         }
       },
+      "System.Text.Encodings.Web/4.5.0": {},
       "R_APICommonDTO/1.0.0": {
         "runtime": {
-          "R_APICommonDTO.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "R_APICommonDTO.dll": {}
+        }
+      },
+      "R_ApplicationBack/1.0.0": {
+        "dependencies": {
+          "R_CommonFrontBackAPI": "1.0.0"
+        },
+        "runtime": {
+          "R_ApplicationBack.dll": {}
         }
       },
       "R_CommonFrontBackAPI/1.0.0": {
@@ -101,42 +120,35 @@
           "System.Text.Encoding.CodePages": "6.0.0"
         },
         "runtime": {
-          "R_CommonFrontBackAPI.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "R_CommonFrontBackAPI.dll": {}
         }
       },
       "R_ContextEnumAndInterface/1.0.0": {
         "runtime": {
-          "R_ContextEnumAndInterface.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "R_MultiTenantDb.Abstract/1.0.0": {
-        "runtime": {
-          "R_MultiTenantDb.Abstract.dll": {
-            "assemblyVersion": "1.0.0",
-            "fileVersion": "1.0.0.0"
-          }
+          "R_ContextEnumAndInterface.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "R_MultiTenantDb/1.0.0": {
+    "R_ValidationAPIMiddleware/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
     },
-    "Microsoft.Extensions.Caching.Abstractions/6.0.0": {
+    "Microsoft.AspNetCore.Http.Abstractions/2.2.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-bcz5sSFJbganH0+YrfvIjJDIcKNW7TL07C4d1eTmXy/wOt52iz4LVogJb6pazs7W0+74j0YpXFErvp++Aq5Bsw==",
-      "path": "microsoft.extensions.caching.abstractions/6.0.0",
-      "hashPath": "microsoft.extensions.caching.abstractions.6.0.0.nupkg.sha512"
+      "sha512": "sha512-Nxs7Z1q3f1STfLYKJSVXCs1iBl+Ya6E8o4Oy1bCxJ/rNI44E/0f6tbsrVqAWfB7jlnJfyaAtIalBVxPKUPQb4Q==",
+      "path": "microsoft.aspnetcore.http.abstractions/2.2.0",
+      "hashPath": "microsoft.aspnetcore.http.abstractions.2.2.0.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Http.Features/2.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ziFz5zH8f33En4dX81LW84I6XrYXKf9jg6aM39cM+LffN9KJahViKZ61dGMSO2gd3e+qe5yBRwsesvyqlZaSMg==",
+      "path": "microsoft.aspnetcore.http.features/2.2.0",
+      "hashPath": "microsoft.aspnetcore.http.features.2.2.0.nupkg.sha512"
     },
     "Microsoft.Extensions.Configuration.Abstractions/8.0.0": {
       "type": "package",
@@ -187,7 +199,19 @@
       "path": "system.text.encoding.codepages/6.0.0",
       "hashPath": "system.text.encoding.codepages.6.0.0.nupkg.sha512"
     },
+    "System.Text.Encodings.Web/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Xg4G4Indi4dqP1iuAiMSwpiWS54ZghzR644OtsRCm/m/lBMG8dUBhLVN7hLm8NNrNTR+iGbshCPTwrvxZPlm4g==",
+      "path": "system.text.encodings.web/4.5.0",
+      "hashPath": "system.text.encodings.web.4.5.0.nupkg.sha512"
+    },
     "R_APICommonDTO/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "R_ApplicationBack/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -198,11 +222,6 @@
       "sha512": ""
     },
     "R_ContextEnumAndInterface/1.0.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
-    "R_MultiTenantDb.Abstract/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

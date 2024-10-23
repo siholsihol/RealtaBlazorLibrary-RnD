@@ -9,7 +9,7 @@ using R_AuthenticationEnumAndInterface;
 using R_BlazorFrontEnd.Controls.MessageBox;
 using R_BlazorFrontEnd.Controls.Notification;
 using R_BlazorFrontEnd.Exceptions;
-using R_BlazorFrontEnd.Tenant;
+using R_BlazorFrontEnd.Interfaces;
 using R_CommonFrontBackAPI;
 using R_CrossPlatformSecurity;
 
@@ -25,7 +25,7 @@ namespace BlazorMenu.Pages.Authentication
         [Inject] private R_ISymmetricJSProvider _encryptProvider { get; set; }
         [Inject] private MenuTabSetTool MenuTabSetTool { get; set; }
         [Inject] private R_NotificationService _notificationService { get; set; }
-        [Inject] private Tenant Tenant { get; set; }
+        [Inject] private R_ITenant _tenant { get; set; }
 
         private readonly R_LoginViewModel _loginVM = new();
 
@@ -67,7 +67,7 @@ namespace BlazorMenu.Pages.Authentication
                 _clientHelper.Set_ComputerId();
                 _clientHelper.Set_CompanyId(_loginVM.LoginModel.CompanyId);
 
-                var lcEncryptedPassword = await _encryptProvider.TextEncrypt(_loginVM.LoginModel.Password, _loginVM.LoginModel.UserId);
+                var lcEncryptedPassword = await _encryptProvider.TextEncrypt(_loginVM.LoginModel.Password, _loginVM.LoginModel.UserId.ToLower());
 
                 await _loginVM.LoginAsync(lcEncryptedPassword);
 
@@ -116,7 +116,7 @@ namespace BlazorMenu.Pages.Authentication
                     };
                 await _localStorageService.SetCultureInfoAsync(loDictCulture);
 
-                await _localStorageService.SetTenantAsync(Tenant.Identifier);
+                await _localStorageService.SetTenantAsync(_tenant.Identifier);
 
                 if (!_loginVM.LoginResult.CCULTURE_ID.Equals("en", StringComparison.InvariantCultureIgnoreCase))
                     _navigationManager.NavigateTo(_navigationManager.Uri, true);

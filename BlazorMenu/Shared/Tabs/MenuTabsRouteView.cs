@@ -6,7 +6,7 @@ using R_BlazorFrontEnd.Controls.Enums;
 using R_BlazorFrontEnd.Exceptions;
 using R_BlazorFrontEnd.Extensions;
 using R_BlazorFrontEnd.Helpers;
-using R_BlazorFrontEnd.Tenant;
+using R_BlazorFrontEnd.Interfaces;
 using System.Reflection;
 
 namespace BlazorMenu.Shared.Tabs
@@ -15,7 +15,7 @@ namespace BlazorMenu.Shared.Tabs
     {
         [Inject] public MenuTabSetTool TabSetTool { get; set; }
         [Inject] public NavigationManager NavigationManager { get; set; }
-        [Inject] public Tenant Tenant { get; set; }
+        [Inject] public R_ITenant Tenant { get; set; }
 
         protected override void Render(RenderTreeBuilder builder)
         {
@@ -75,7 +75,7 @@ namespace BlazorMenu.Shared.Tabs
                 {
                     selTab.Body = body;
                     selTab.IsActive = true;
-                    selTab.PageTitle = GetPageTitle(RouteData.PageType);
+                    selTab.PageTitle = GetPageTitle(RouteData.PageType, selTab.AssemblyResourceName);
 
                     if (isLoad)
                     {
@@ -108,7 +108,7 @@ namespace BlazorMenu.Shared.Tabs
             return page;
         }
 
-        private string GetPageTitle(Type poPageType)
+        private string GetPageTitle(Type poPageType, string pcAssemblyResourceName)
         {
             var loEx = new R_Exception();
             var lcRtn = string.Empty;
@@ -126,8 +126,7 @@ namespace BlazorMenu.Shared.Tabs
 
                     if (!string.IsNullOrWhiteSpace(loPageAttribute.ResourceId))
                     {
-                        var lcProgramId = NavigationManager.ToBaseRelativePath(NavigationManager.Uri) + "FrontResources";
-                        lcRtn = R_FrontUtility.R_GetMessage(lcProgramId, loPageAttribute.ResourceId);
+                        lcRtn = R_FrontUtility.R_GetMessage(pcAssemblyResourceName, loPageAttribute.ResourceId);
                     }
                 }
             }

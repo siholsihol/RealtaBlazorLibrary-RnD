@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
 using R_BlazorFrontEnd.Controls.Notification;
 using R_BlazorFrontEnd.Interfaces;
-using R_BlazorFrontEnd.Tenant;
 using Toolbelt.Blazor;
 
 namespace BlazorMenu.Services
@@ -15,7 +14,7 @@ namespace BlazorMenu.Services
         private readonly AuthenticationStateProvider _stateProvider;
         private readonly R_NotificationService _notificationService;
         private readonly R_IEnvironment _environment;
-        private readonly Tenant _tenant;
+        private readonly R_ITenant _tenant;
 
         public HttpInterceptorService(
             HttpClientInterceptor httpClientInterceptor,
@@ -23,7 +22,7 @@ namespace BlazorMenu.Services
             AuthenticationStateProvider stateProvider,
             R_NotificationService notificationService,
             R_IEnvironment environment,
-            Tenant tenant)
+            R_ITenant tenant)
         {
             _httpClientInterceptor = httpClientInterceptor;
             _navigationManager = navigationManager;

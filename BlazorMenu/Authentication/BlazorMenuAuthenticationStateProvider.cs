@@ -5,7 +5,7 @@ using BlazorMenuModel;
 using Microsoft.AspNetCore.Components.Authorization;
 using R_AuthenticationEnumAndInterface;
 using R_BlazorFrontEnd.Exceptions;
-using R_BlazorFrontEnd.Tenant;
+using R_BlazorFrontEnd.Interfaces;
 using R_CommonFrontBackAPI;
 using R_SecurityPolicyCommon.DTOs;
 using R_SecurityPolicyModel;
@@ -19,7 +19,7 @@ namespace BlazorMenu.Authentication
         private readonly R_ITokenRepository _tokenRepository;
         private readonly BlazorMenuLocalStorageService _localStorageService;
         private readonly R_IMenuService _menuService;
-        private readonly Tenant _tenant;
+        private readonly R_ITenant _tenant;
         private readonly IClientHelper _clientHelper;
 
         public BlazorMenuAuthenticationStateProvider(
@@ -27,7 +27,7 @@ namespace BlazorMenu.Authentication
             BlazorMenuLocalStorageService localStorageService,
             IClientHelper clientHelper,
             R_IMenuService menuService,
-            Tenant tenant)
+            R_ITenant tenant)
         {
             _tokenRepository = tokenRepository;
             _localStorageService = localStorageService;

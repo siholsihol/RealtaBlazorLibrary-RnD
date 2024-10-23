@@ -1,16 +1,16 @@
 ﻿using Microsoft.AspNetCore.Components;
-using R_BlazorFrontEnd.Tenant;
+using R_BlazorFrontEnd.Interfaces;
 
 namespace BlazorMenu.Shared.Tabs
 {
     public class MenuTabSetTool
     {
         private readonly NavigationManager _navigationManager;
-        private readonly Tenant _tenant;
+        private readonly R_ITenant _tenant;
 
         public MenuTabSetTool(
             NavigationManager navigationManager,
-            Tenant tenant)
+            R_ITenant tenant)
         {
             _navigationManager = navigationManager;
             _tenant = tenant;
