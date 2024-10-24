@@ -85,7 +85,6 @@ namespace BlazorMenu.Services
                 StorageConstants.Culture,
                 StorageConstants.CultureInfo,
                 StorageConstants.RefreshToken,
-                StorageConstants.CultureReport,
                 StorageConstants.TenantId
             });
         }
