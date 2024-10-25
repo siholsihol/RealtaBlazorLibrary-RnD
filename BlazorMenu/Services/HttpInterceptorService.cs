@@ -49,7 +49,15 @@ namespace BlazorMenu.Services
             if (absPath.Contains("R_RefreshToken") && !e.Response.IsSuccessStatusCode)
             {
                 await ((BlazorMenuAuthenticationStateProvider)_stateProvider).MarkUserAsLoggedOut();
-                _navigationManager.NavigateTo("/");
+
+                if (_environment.IsDevelopment)
+                {
+                    _navigationManager.NavigateTo("/");
+                }
+                else
+                {
+                    _navigationManager.NavigateTo($"{_tenant.Identifier}/");
+                }
 
                 _notificationService.Error("Invalid refresh token");
             }

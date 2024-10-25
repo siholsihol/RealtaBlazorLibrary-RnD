@@ -25,8 +25,7 @@
 }
 else
 {
-    <TenantRouter AppAssembly="@typeof(Program).Assembly"
-                  AdditionalAssemblies="@lazyLoadedAssemblies">
+    <TenantRouter AppAssembly="@typeof(Program).Assembly">
         <Found Context="routeData">
             <CascadingAuthenticationState>
                 <MenuTabsRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
