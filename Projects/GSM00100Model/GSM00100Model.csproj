@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GSM00100Common\GSM00100Common.csproj" />
+    <ProjectReference Include="..\GSM00100FrontResources\GSM00100FrontResources.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="R_APIClient">
+      <HintPath>..\..\Dll Front\R_APIClient.dll</HintPath>
+    </Reference>
+    <Reference Include="R_APICommonDTO">
+      <HintPath>..\..\Dll Front\R_APICommonDTO.dll</HintPath>
+    </Reference>
+    <Reference Include="R_BlazorFrontEnd">
+      <HintPath>..\..\Dll Front\R_BlazorFrontEnd.dll</HintPath>
+    </Reference>
+    <Reference Include="R_BusinessObjectFront">
+      <HintPath>..\..\Dll Front\R_BusinessObjectFront.dll</HintPath>
+    </Reference>
+    <Reference Include="R_CommonFrontBackAPI">
+      <HintPath>..\..\Dll Front\R_CommonFrontBackAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="R_LockingFront">
+      <HintPath>..\..\Dll Front\R_LockingFront.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

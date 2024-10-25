@@ -1,12 +1,12 @@
 {
   "profiles": {
-    "R_BlazorFrontEnd.Controls": {
+    "GSM00100FrontResources": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:1566;http://localhost:1567"
+      "applicationUrl": "https://localhost:33233;http://localhost:33234"
     }
   }
 }

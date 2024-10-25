@@ -26,6 +26,7 @@ namespace BlazorMenu.Pages.Authentication
         [Inject] private MenuTabSetTool MenuTabSetTool { get; set; }
         [Inject] private R_NotificationService _notificationService { get; set; }
         [Inject] private R_ITenant _tenant { get; set; }
+        [Inject] private R_IEnvironment _environment { get; set; }
 
         private readonly R_LoginViewModel _loginVM = new();
 
@@ -41,9 +42,12 @@ namespace BlazorMenu.Pages.Authentication
 
                 await _loginVM.R_GetSecurityPolicyParameterAsync();
 
-                //_loginVM.LoginModel.CompanyId = "001";
-                //_loginVM.LoginModel.UserId = "cp";
-                //_loginVM.LoginModel.Password = "cp";
+                if (_environment.IsDevelopment)
+                {
+                    _loginVM.LoginModel.CompanyId = "001";
+                    _loginVM.LoginModel.UserId = "cp";
+                    _loginVM.LoginModel.Password = "cp";
+                }
             }
             catch (R_Exception rex)
             {

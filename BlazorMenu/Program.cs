@@ -22,14 +22,15 @@ builder.R_RegisterBlazorServices();
 builder.Services.R_AddBlazorFrontEnd();
 
 builder.Services.AddTransient<R_IFileConverter, R_FileConverter>();
-builder.Services.AddTransient<R_IReport, R_ReportService>();
+builder.Services.AddTransient<R_IReport, R_TenantReportService>();
 builder.Services.AddSingleton<R_IFileDownloader, R_FileDownloader>();
 builder.Services.AddTransient<HttpInterceptorService>();
+builder.Services.AddSingleton<R_IEnvironment, BlazorMenuEnvironmentService>();
 
 Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", builder.HostEnvironment.Environment);
 
 //builder.Services.AddSingleton<RouteManager>();
-//builder.Services.AddScoped<Interop>();
+builder.Services.AddScoped<Interop>();
 
 builder.Services.AddMultiTenantancy();
 
