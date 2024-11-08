@@ -25,7 +25,7 @@
 }
 else
 {
-    <TenantRouter AppAssembly="@typeof(Program).Assembly">
+    <R_TenantRouter AppAssembly="@typeof(Program).Assembly">
         <Found Context="routeData">
             <CascadingAuthenticationState>
                 <MenuTabsRouteView RouteData="@routeData" DefaultLayout="@typeof(MainLayout)" />
@@ -48,7 +48,7 @@ else
                 <p>@message</p>
             </LayoutView>
         </ApiError>
-    </TenantRouter>
+    </R_TenantRouter>
 }
 
 @code {

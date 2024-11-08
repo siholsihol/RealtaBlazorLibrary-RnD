@@ -8,7 +8,7 @@ using R_BlazorFrontEnd.FileConverter;
 using R_BlazorFrontEnd.Helpers;
 using R_BlazorFrontEnd.Interfaces;
 using R_BlazorFrontEnd.Report;
-using R_BlazorFrontEnd.Tenant;
+using R_BlazorFrontEnd.Tenant.Extensions;
 using R_BlazorStartup;
 
 var builder = WebAssemblyHostBuilder.CreateDefault(args);
@@ -30,7 +30,7 @@ builder.Services.AddSingleton<R_IEnvironment, BlazorMenuEnvironmentService>();
 Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", builder.HostEnvironment.Environment);
 
 //builder.Services.AddSingleton<RouteManager>();
-builder.Services.AddScoped<Interop>();
+//builder.Services.AddScoped<Interop>();
 
 builder.Services.AddMultiTenantancy();
 

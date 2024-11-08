@@ -7,6 +7,8 @@
 	  <BlazorWebAssemblyLoadAllGlobalizationData>true</BlazorWebAssemblyLoadAllGlobalizationData>
     <BlazorCacheBootResources>false</BlazorCacheBootResources>
     <BlazorEnableCompression>false</BlazorEnableCompression>
+    <CompressionEnabled>false</CompressionEnabled>
+    <PublishTrimmed>false</PublishTrimmed>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -16,15 +18,11 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Authorization" Version="6.0.14" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly" Version="6.0.14" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.WebAssembly.DevServer" Version="6.0.14" PrivateAssets="all" />
-		<PackageReference Include="Microsoft.Extensions.Http" Version="6.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Http" Version="8.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
-		<PackageReference Include="Telerik.UI.for.Blazor" Version="4.6.0" />
+		<PackageReference Include="Telerik.UI.for.Blazor" Version="5.1.1" />
 		<PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.35.0" />
 		<PackageReference Include="Toolbelt.Blazor.HttpClientInterceptor" Version="10.2.0" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <ProjectReference Include="..\Projects\GSM00100Front\GSM00100Front.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
