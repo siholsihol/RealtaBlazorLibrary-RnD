@@ -29,6 +29,8 @@ namespace BlazorMenu.Pages.Authentication
         [Inject] private R_IEnvironment _environment { get; set; }
 
         private readonly R_LoginViewModel _loginVM = new();
+        private string _captcha = "";
+        private int _captchaLength = 4;
 
         protected override async Task OnParametersSetAsync()
         {
@@ -60,6 +62,13 @@ namespace BlazorMenu.Pages.Authentication
 
             if (loEx.HasError)
                 _notificationService.Error(loEx.ErrorList[0].ErrDescp);
+        }
+
+        protected override void OnInitialized()
+        {
+            _captcha = R_BlazorFrontEnd.Controls.Captcha.Tools.GetCaptchaWord(_captchaLength);
+
+            base.OnInitialized();
         }
 
         private async Task ValidateUser()

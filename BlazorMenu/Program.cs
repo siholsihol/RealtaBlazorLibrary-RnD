@@ -29,9 +29,6 @@ builder.Services.AddSingleton<R_IEnvironment, BlazorMenuEnvironmentService>();
 
 Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", builder.HostEnvironment.Environment);
 
-//builder.Services.AddSingleton<RouteManager>();
-//builder.Services.AddScoped<Interop>();
-
 builder.Services.AddMultiTenantancy();
 
 var host = builder.Build();

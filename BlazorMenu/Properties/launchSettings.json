@@ -12,7 +12,7 @@
       "hotReloadEnabled": false,
       "hotReloadProfile": "aspnetcore",
       "nativeDebugging": false,
-      "launchUrl": ""
+      "launchUrl": "realta-rcd"
     },
     "IIS Express": {
       "commandName": "IISExpress",
