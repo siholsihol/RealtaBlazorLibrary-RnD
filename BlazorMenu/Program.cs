@@ -19,13 +19,11 @@ builder.Services.R_AddBlazorFrontEndControls();
 
 builder.R_RegisterBlazorServices();
 
-builder.Services.R_AddBlazorFrontEnd();
+builder.Services.R_AddBlazorMenuServices();
 
 builder.Services.AddTransient<R_IFileConverter, R_FileConverter>();
 builder.Services.AddTransient<R_IReport, R_TenantReportService>();
 builder.Services.AddSingleton<R_IFileDownloader, R_FileDownloader>();
-builder.Services.AddTransient<HttpInterceptorService>();
-builder.Services.AddSingleton<R_IEnvironment, BlazorMenuEnvironmentService>();
 
 Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", builder.HostEnvironment.Environment);
 
@@ -37,6 +35,6 @@ host.Services.AddServiceProviderToTenantRoutes();
 
 host.R_SetupBlazorService();
 
-await host.R_UseBlazorFrontEnd();
+await host.R_UseBlazorMenuServices();
 
 await host.RunAsync();

@@ -1,4 +1,6 @@
-﻿using BlazorClientHelper;
+﻿using System.Security.Claims;
+using System.Text.Json;
+using BlazorClientHelper;
 using BlazorMenu.Services;
 using BlazorMenuCommon.DTOs;
 using BlazorMenuModel;
@@ -9,8 +11,6 @@ using R_BlazorFrontEnd.Interfaces;
 using R_CommonFrontBackAPI;
 using R_SecurityPolicyCommon.DTOs;
 using R_SecurityPolicyModel;
-using System.Security.Claims;
-using System.Text.Json;
 
 namespace BlazorMenu.Authentication
 {
@@ -18,7 +18,6 @@ namespace BlazorMenu.Authentication
     {
         private readonly R_ITokenRepository _tokenRepository;
         private readonly BlazorMenuLocalStorageService _localStorageService;
-        private readonly R_IMenuService _menuService;
         private readonly R_ITenant _tenant;
         private readonly IClientHelper _clientHelper;
 
@@ -26,13 +25,11 @@ namespace BlazorMenu.Authentication
             R_ITokenRepository tokenRepository,
             BlazorMenuLocalStorageService localStorageService,
             IClientHelper clientHelper,
-            R_IMenuService menuService,
             R_ITenant tenant)
         {
             _tokenRepository = tokenRepository;
             _localStorageService = localStorageService;
             _clientHelper = clientHelper;
-            _menuService = menuService;
             _tenant = tenant;
         }
 

@@ -1,7 +1,7 @@
 ﻿using BlazorMenu.Authentication;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
-using R_BlazorFrontEnd.Controls.Notification;
+using R_BlazorFrontEnd.Controls;
 using R_BlazorFrontEnd.Interfaces;
 using Toolbelt.Blazor;
 
@@ -12,22 +12,23 @@ namespace BlazorMenu.Services
         private readonly HttpClientInterceptor _httpClientInterceptor;
         private readonly NavigationManager _navigationManager;
         private readonly AuthenticationStateProvider _stateProvider;
-        private readonly R_NotificationService _notificationService;
+        //private readonly R_NotificationService _notificationService;
         private readonly R_IEnvironment _environment;
         private readonly R_ITenant _tenant;
+        private readonly R_ToastService _toastService;
 
         public HttpInterceptorService(
             HttpClientInterceptor httpClientInterceptor,
             NavigationManager navigationManager,
             AuthenticationStateProvider stateProvider,
-            R_NotificationService notificationService,
+            R_ToastService toastService,
             R_IEnvironment environment,
             R_ITenant tenant)
         {
             _httpClientInterceptor = httpClientInterceptor;
             _navigationManager = navigationManager;
             _stateProvider = stateProvider;
-            _notificationService = notificationService;
+            _toastService = toastService;
             _environment = environment;
             _tenant = tenant;
         }
@@ -59,7 +60,7 @@ namespace BlazorMenu.Services
                     _navigationManager.NavigateTo($"{_tenant.Identifier}/");
                 }
 
-                _notificationService.Error("Invalid refresh token");
+                _toastService.Error("Invalid refresh token");
             }
         }
 

@@ -13,26 +13,12 @@
 
     <link href="css/captcha.css" rel="stylesheet" />
 
-    <script type="text/javascript">
-        // Disable the back button
-        function disableBackButton() {
-            history.pushState(null, null, location.href);
-            window.onpopstate = function () {
-                history.go(1);
-            };
-        }
-
-        // Call the disable back button function
-        disableBackButton();
-    </script>
-
     <script src="_content/Telerik.UI.for.Blazor/js/telerik-blazor.js" defer></script>
 
     <link href="css/theme.min.css" rel="stylesheet" />
     <link href="css/all.css" rel="stylesheet" id="style-default" />
     <script src="js/aes-js-3.1.2.js"></script>
 
-    <!--<link rel="stylesheet" href="_content/R_BlazorFrontEnd.Controls/css/R_BlazorControlStyle.css" />-->
     <script type="module" src="_content/R_BlazorFrontEnd.Controls/R_BlazorFrontEnd.Controls.js" defer></script>
     <script src="R_BlazorFrontEnd.Controls.js" defer></script>
 
@@ -70,16 +56,6 @@
         <a class="dismiss">🗙</a>
     </div>
     <script src="_framework/blazor.webassembly.js"></script>
-    <!--<script src="_framework/blazor.webassembly.js" autostart="false"></script>-->
-    <!--<script>
-        if (window.location.hostname.includes("localhost")) {
-            Blazor.start({
-                environment: "Development"
-            });
-        } else {
-        Blazor.start();
-        }
-    </script>-->
 
     <script type="text/javascript">
         function encryptText(inputSrt, keyStr, ivStr) {
@@ -114,6 +90,7 @@
     <script src="vendors/lodash/lodash.min.js"></script>
     <script src="vendors/list.js/list.min.js"></script>
     <script src="js/theme.js"></script>
+    <script src="js/main.js"></script>
 </body>
 
 </html>
